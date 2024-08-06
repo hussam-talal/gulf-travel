@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - Gulf Travel Booking</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="img/logo.jfif" alt="Logo" class="logo-img">
+                <h1>Gulf Travel Booking</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="booking-section">
+            <h2>Book Your Trip</h2>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="destination">Destination:</label>
+                    <input type="text" id="destination" name="destination" >
+                </div>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Phone:</label>
+                    <input type="number" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Passport:</label>
+                    <input type="number" id="passport" name="passport" required>
+                </div>
+                <div class="form-group">
+                    <label for="departure-date">Departure Date:</label>
+                    <input type="date" id="departure-date" name="departure-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="return-date">Return Date:</label>
+                    <input type="date" id="return-date" name="return-date" required>
+                </div>
+                <button type="submit">Confirm Booking</button>
+            </form>
+        </section>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2024 Gulf Travel Booking. All Rights Reserved.</p>
+    </footer>
+
+    <script >
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const destination = urlParams.get('destination');
+
+            if (destination) {
+                document.getElementById('destination').value = destination;
+                alert("Ticket booked: "+destination);
+            }
+        });
+
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const Name = document.getElementById('name').value;
+            const departure_date = document.getElementById('departure-date').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const return_date = document.getElementById('return-date').value;
+
+            const passport = document.getElementById('passport').value;
+
+            if (Name && departure_date && email && phone && passport && return_date) {
+                // Process booking information
+                alert('Booking confirmed! Details:\n' +
+                      `Name:  ${Name}\n` +
+                      `Email: ${email}\n` +
+                      `Phone: ${phone}\n` +
+                      `departure-date: ${departure_date}\n` +
+                      `return-date: ${return_date}\n` +
+                      `Passport: ${passport}`);
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+    </script>
+
+</body>
+</html>
